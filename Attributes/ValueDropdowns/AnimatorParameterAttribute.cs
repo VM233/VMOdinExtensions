@@ -10,14 +10,30 @@ namespace VMFramework.OdinExtensions
     {
         public AnimatorControllerParameterType? ParameterType;
 
+        public string AnimatorFieldName;
+
         public AnimatorParameterAttribute()
         {
             ParameterType = null;
+            AnimatorFieldName = null;
+        }
+
+        public AnimatorParameterAttribute(string animatorFieldName)
+        {
+            ParameterType = null;
+            AnimatorFieldName = animatorFieldName;
         }
 
         public AnimatorParameterAttribute(AnimatorControllerParameterType parameterType)
         {
             ParameterType = parameterType;
+            AnimatorFieldName = null;
+        }
+
+        public AnimatorParameterAttribute(AnimatorControllerParameterType parameterType, string animatorFieldName)
+        {
+            ParameterType = parameterType;
+            AnimatorFieldName = animatorFieldName;
         }
     }
 }
