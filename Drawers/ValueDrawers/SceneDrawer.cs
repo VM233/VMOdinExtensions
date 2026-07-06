@@ -13,17 +13,17 @@ namespace VMFramework.OdinExtensions
         {
             var rect = SirenixEditorGUI.BeginVerticalPropertyLayout(label, out var labelRect);
             var value = this.ValueEntry.SmartValue;
-            SirenixEditorFields.IntField("Handle", GetSceneHandleValue(value));
+            EditorGUILayout.TextField("Handle", GetSceneHandleText(value), EditorStyles.textField);
             EditorGUILayout.TextField("Name", value.name, EditorStyles.textField);
             SirenixEditorGUI.EndVerticalPropertyLayout();
         }
 
-        private static int GetSceneHandleValue(Scene scene)
+        private static string GetSceneHandleText(Scene scene)
         {
 #if UNITY_6000_5_OR_NEWER
-            return scene.handle.GetRawData();
+            return scene.handle.GetRawData().ToString();
 #else
-            return scene.handle;
+            return scene.handle.ToString();
 #endif
         }
     }
